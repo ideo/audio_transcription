@@ -1,6 +1,3 @@
-import pickle
-
-
 def parse_response(response):
     """
     For each excerpt, the response returns the transcript, a confidence level
@@ -29,10 +26,11 @@ def save_file(response, filepath):
                     to save under. That is created here.
     """
     filepath = filepath.split('.')[0]
-    filepath += '_transcription.pkl'
+    filepath += '_transcription.tsv'
 
-    with open(filepath, 'wb') as pkl_file:
-        pickle.dump(response, pkl_file)
+    with open(filepath, 'w') as outfile:
+        for excerpt in transcription:
+            outfile.write(f"{excerpt['time']}\t{excerpt['transcript']}\n")
 
 
 def parse_and_save_file(response, filepath):

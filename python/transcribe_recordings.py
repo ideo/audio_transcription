@@ -12,7 +12,7 @@ def transcribe_recordings(filepaths, sample_rates=[]):
         try:
             print(f"\nStarting transcription for `{gcs_uri}`")
             response = src.long_transcribe(gcs_uri, sample_rate_hertz=rate)
-            print(f"Completed transcription for `{gcs_uri}`.)
+            print(f"Completed transcription for `{gcs_uri}`.")
 
         except Exception as e:
             print(f"Transcription of {gcs_uri} failed.")
@@ -28,5 +28,5 @@ def transcribe_recordings(filepaths, sample_rates=[]):
 
 
 if __name__ == "__main__":
-    filepaths = ['audio/10_SteveAlexis.wav']
+    filepaths = ['../audio/10_SteveAlexis.wav']
     transcribe_recordings(filepaths)
