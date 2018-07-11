@@ -17,7 +17,8 @@ def transcribe_recordings(filepaths, sample_rates=[]):
         except Exception as e:
             print(f"Transcription of {gcs_uri} failed.")
             print(f"\nAPI Error: {e}\n")
-            response = bucket_name
+            # Helpful to see the URI of a failed transcription
+            response = gcs_uri
 
         transcripts.append(response)
 
