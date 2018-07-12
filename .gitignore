@@ -7,3 +7,4 @@ audio/
 transcriptions/
 speech_key.sh
 *.json
+notebooks/

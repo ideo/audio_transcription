@@ -26,7 +26,7 @@ def file_is_not_wav(filepath):
     Currently, audiotools is only configured for `.wav` files. Theoretically,
     it's possible to get it to work for all types.
     """
-    ext = filepath.split('.')[-1]
+    ext = filepath.split('.')[-1].lower()
     ext_is_not_wav = (ext != 'wav')
 
     if ext_is_not_wav:
