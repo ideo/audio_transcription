@@ -2,6 +2,8 @@ from warnings import warn
 
 import audiotools
 
+from .encodings import ENCODINGS
+
 
 def get_sample_rates(filepaths, sample_rates):
     """
@@ -38,3 +40,19 @@ def file_is_not_wav(filepath):
         warn(msg)
 
     return ext_is_not_wav
+
+
+def determine_encoding_format(sample_rate):
+    """
+    Determine the proper enocding format, from this list:
+    https://cloud.google.com/speech-to-text/docs/encoding
+    """
+    # .wav files take LINEAR16
+    encoding = "LINEAR16"
+
+    if sample_rate in [8000, 12000, 16000, 24000, 48000]:
+        encoding = "OGG_OPUS"
+
+    # Add more decision points here as necessary
+
+    return ENCODINGS[encoding]

@@ -127,5 +127,5 @@ if __name__ == "__main__":
     delete_all_buckets()
     print("Test complete!")
 
-    # bucket_name = "transcribe_bucket_2018-07-12_11-46-40"
+    # bucket_name = "transcribe_bucket_2018-07-12_12-05-06"
     # delete_everything(bucket_name)
