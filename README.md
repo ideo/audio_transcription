@@ -1,4 +1,7 @@
-
+### Google Cloud
+See what buckets are live in the [Cloud Storage browser](https://console.cloud.google.com/storage/browser?_ga=2.123304974.-429504246.1530805200&project=test-1530807817851&folder&organizationId=905175988200).
+'
+'
 ### Audio Data
 Edit `make_symlinks.sh` for your directory setup, then run with `source make_symlinks.sh` to access the audio files stored on Dropbox.
 

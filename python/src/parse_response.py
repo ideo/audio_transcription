@@ -9,18 +9,13 @@ def parse_response(response):
     parses out just the most confident transcript and the start time of its
     first word (in seconds).
     """
-    if isinstance(response, str):
-        # When the API errors, `response` is just the gcs_uri
-        return response
-
-    else:
-        transcription = []
-        for ii, result in enumerate(response.results):
-            start_time = result.alternatives[0].words[0].start_time
-            excerpt = {'transcript': result.alternatives[0].transcript,
-                      'time':       start_time.seconds + start_time.nanos * 1e-9}
-            transcription.append(excerpt)
-        return transcription
+    transcription = []
+    for ii, result in enumerate(response.results):
+        start_time = result.alternatives[0].words[0].start_time
+        excerpt = {'transcript': result.alternatives[0].transcript,
+                  'time':       start_time.seconds + start_time.nanos * 1e-9}
+        transcription.append(excerpt)
+    return transcription
 
 
 def save_file_as_tsv(transcript, filepath):
@@ -40,6 +35,7 @@ def save_file_as_tsv(transcript, filepath):
     with open(filepath, 'w') as outfile:
         for excerpt in transcript:
             outfile.write(f"{excerpt['time']}\t{excerpt['transcript']}\n")
+    print(f'Saved transcript to {filepath}.')
 
 
 def save_file_as_pickle(response, filepath):
@@ -49,9 +45,12 @@ def save_file_as_pickle(response, filepath):
 
     with open(filepath, 'wb') as pkl_file:
         pickle.dump(response, pkl_file)
+    print(f'Pickled API output to {filepath}.')
 
 
 def parse_and_save_file(response, filepath):
-    save_file_as_pickle(response, filepath)
-    transcript = parse_response(response)
-    save_file_as_tsv(transcript, filepath)
+    if not isinstance(response, str):
+        # When transcription fails it simply returns the gcs_uri as a string
+        save_file_as_pickle(response, filepath)
+        transcript = parse_response(response)
+        save_file_as_tsv(transcript, filepath)
