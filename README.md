@@ -1,4 +1,8 @@
-# Audiotools
+
+### Audio Data
+Edit `make_symlinks.sh` for your directory setup, then run with `source make_symlinks.sh` to access the audio files stored on Dropbox.
+
+#### Audiotools
 Download the [`audiotools`](http://audiotools.sourceforge.net/install.html) package and follow the installation guide.
 
 In order to support `.m4a`, install `FAAC` and `FAAD2` with:
