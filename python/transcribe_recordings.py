@@ -29,5 +29,5 @@ def transcribe_recordings(filepaths, sample_rates=[]):
 
 
 if __name__ == "__main__":
-    filepaths = ['../audio/10_SteveAlexis.wav']
+    filepaths = ['../audio/chris-and-joe.WAV']
     transcribe_recordings(filepaths)

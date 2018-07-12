@@ -1,3 +1,6 @@
+import pickle
+
+
 def parse_response(response):
     """
     For each excerpt, the response returns the transcript, a confidence level
@@ -25,12 +28,17 @@ def save_file(response, filepath):
         filepath:   (str) The filepath to the audio recording, not the filepath
                     to save under. That is created here.
     """
-    filepath = filepath.split('.')[0]
-    filepath += '_transcription.tsv'
+    filename = filepath.split('/')[-1]
+    filename = filename.split('.')[0]
+    filepath = f'../transcriptions/{filename}_transcription.tsv'
 
     with open(filepath, 'w') as outfile:
         for excerpt in transcription:
             outfile.write(f"{excerpt['time']}\t{excerpt['transcript']}\n")
+
+    filepath = f'../transcriptions/{filename}_speech_to_text_object.pkl'
+    with open(filepath, 'wb') as pkl_file:
+        pickle.dump(response)
 
 
 def parse_and_save_file(response, filepath):
