@@ -1,7 +1,7 @@
 ## Configuring Google Cloud API (DRAFT)
 
 #### Getting Started
-1. Create a [Google Cloud](https://cloud.google.com/) account. While Google offers a free trial, you still need to supply a credit card to create and account.
+1. Create a [Google Cloud](https://cloud.google.com/) account. While Google offers a free trial, you still need to supply a credit card to create an account.
 2. Follow the [instructions](https://developers.google.com/api-client-library/python/start/installation) for installing the Python API Library.
 
 #### Create a New Project
@@ -24,7 +24,7 @@
 4. Under the "Service Account" drop down, select "New Service Account."
 5. Give it a name. Under "Select a Role," choose "Project" -> "Owner."
 6. Create and download a JSON key.
-7. Save it in a secure location, then add the folloing like to your `.bash_profile` file:
+7. Save it in a secure location, then add the following like to your `.bash_profile` file:
 	`GOOGLE_APPLICATION_CREDENTIALS="path/to/secure/location/service_account_key.json"`  
 	Note: Keep this key private. Do not upload this key to GitHub.
 
