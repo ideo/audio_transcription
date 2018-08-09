@@ -1,6 +1,8 @@
 from warnings import warn
 
 import audiotools
+import wave
+import audioop
 
 from .encodings import ENCODINGS
 
@@ -15,6 +17,7 @@ def get_sample_rates(filepaths, sample_rates):
             if file_is_not_wav(audio_file):
                 sample_rates.append(44100)
             else:
+                
                 rate = audiotools.open(audio_file).sample_rate()
                 sample_rates.append(rate)
         return sample_rates

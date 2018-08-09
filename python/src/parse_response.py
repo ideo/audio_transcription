@@ -1,5 +1,5 @@
 import pickle
-
+import pathlib
 
 def parse_response(response):
     """
@@ -28,8 +28,7 @@ def save_file_as_tsv(transcript, filepath):
         filepath:   (str) The filepath to the audio recording, not the filepath
                     to save under. That is created here.
     """
-    filename = filepath.split('/')[-1]
-    filename = filename.split('.')[0]
+    filename = pathlib.Path(filepath).stem
     filepath = f'../transcriptions/{filename}_transcription.tsv'
 
     with open(filepath, 'w') as outfile:

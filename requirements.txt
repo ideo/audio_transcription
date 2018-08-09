@@ -1,0 +1,3 @@
+google-cloud
+google-cloud-speech
+audiotools
